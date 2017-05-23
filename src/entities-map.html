@@ -1,0 +1,89 @@
+<head>
+  <title>inventaire.io entities map</title>
+  <link rel="stylesheet" href="entities-map.css">
+  <meta name="twitter:title" content="inventaire.io entities map">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@inventaire_dev">
+  <meta name="twitter:description" content="rare picture of inventaire.io techical development standing on the shoulders of giants">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/inventaire/entities-map/master/screenshots/entities-map.png">
+
+  <meta property="fb:app_id" content="1383915125249576"/>
+  <meta property="og:url" content="https://inventaire.github.io/entities-map">
+  <meta property="og:title" content="inventaire.io entities map">
+  <meta name="description" property="og:description" content="rare picture of inventaire.io techical development standing on the shoulders of giants" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/inventaire/entities-map/master/screenshots/entities-map.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+  <main class="column wrap">
+    <h1><a href="https://inventaire.io" tabindex="0">inventaire.io</a> entities map</h1>
+    <div class="column">
+      <div class="row">
+        <div class="authors box">
+          <span class="label">authors</span>
+          <div class="boulets">
+            <div class="boulet boulet-wikidata"></div>
+            <div class="boulet boulet-inventaire"></div>
+          </div>
+        </div>
+
+        <div class="series box">
+          <span class="label">series</span>
+          <div class="boulets">
+            <div class="boulet boulet-wikidata"></div>
+            <div class="boulet boulet-inventaire"></div>
+          </div>
+        </div>
+        <div class="subjects box">
+          <span class="label">subjects</span>
+          <div class="boulets">
+            <div class="boulet boulet-wikidata"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="works box">
+          <span class="label">works</span>
+          <div class="boulets">
+            <div class="boulet boulet-wikidata"></div>
+            <div class="boulet boulet-inventaire"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="editions box">
+          <span class="label">editions</span>
+          <div class="boulets">
+            <!-- <div class="boulet boulet-wikidata boulet-half"></div> -->
+            <div class="boulet boulet-inventaire"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="items box">
+          <span class="label">items</span>
+          <div class="boulets">
+            <div class="boulet boulet-inventaire"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="works-authors" class="relation"><span class="property">P50</span></div>
+    <div id="works-series" class="relation"><span class="property">P179</span></div>
+    <div id="works-subject" class="relation"><span class="property">P921</span></div>
+    <div id="editions-works" class="relation"><span class="property">P629</span></div>
+
+    <div id="dbs">
+      <p id="wikidata" class="db">
+        <span class="boulet boulet-wikidata"></span>
+        <span class="name">Wikidata</span>
+      </p>
+      <p id="inventaire" class="db">
+        <span class="boulet boulet-inventaire"></span>
+        <span class="name">Inventaire</span>
+      </p>
+    </div>
+  </main>
+</body>

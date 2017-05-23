@@ -1,0 +1,169 @@
+body{
+  color: #222;
+  font-family: sans-serif;
+  position: relative;
+}
+
+h1{
+  font-size: 2em;
+  margin: 0;
+}
+h2{
+  font-size: 1.6em;
+  margin: 1.5em 0 0.2em 0;
+}
+
+h1, h2{
+  text-align: center;
+  color: #777;
+}
+
+a{
+  text-decoration: none;
+}
+
+@mixin inner-shadow($x:1px, $y:1px, $blur:4px, $spread:1px, $color:rgba(#888, 0.3)){
+  // offset-x | offset-y | blur-radius | spread-radius | color
+  box-shadow: (-$x) $y $blur $spread $color inset,
+              $x (-$y) $blur $spread $color inset;
+}
+
+@mixin button ($color, $text-color:white) {
+  background-color: $color;
+  transition: background-color 0.5s;
+  transition: box-shadow 0.3s;
+  color: $text-color;
+  &:hover, &:focus {
+    background-color: darken($color, 3%);
+    @include inner-shadow;
+  }
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  max-width: 50em;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 1em;
+  flex: 1 0 auto;
+  .box{
+    flex: 1 0 auto;
+    width: 15em;
+    margin: 1em;
+    font-size: 1.2em;
+  }
+  z-index: 1;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding: 1em;
+}
+
+.relation{
+  position: absolute;
+  opacity: 0.8;
+  // transition: opacity 0.5s;
+  // &:hover{
+    // opacity: 1;
+  // }
+  border-radius: 1px;
+  border-bottom: 3px solid #555;
+  text-align: center;
+  span{
+    line-height: 2em;
+  }
+}
+
+main{
+  position: relative;
+}
+
+#works-authors{
+  width: 300px;
+  top: 180px;
+  left: 355px;
+  transform: rotate(30deg);
+}
+
+#works-series{
+  width: 150px;
+  top: 180px;
+  left: 618px;
+  transform: rotate(90deg);
+}
+
+#works-subject{
+  width: 300px;
+  top: 180px;
+  left: 701px;
+  transform: rotate(-30deg);
+}
+
+#editions-works{
+  width: 150px;
+  top: 327px;
+  left: 618px;
+  transform: rotate(90deg);
+}
+
+
+.box{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  // flex: 1;
+  white-space: nowrap;
+  padding: 1em;
+  text-align: center;
+  border-radius: 3px;
+  margin: 0.2em;
+  color: white;
+  // background-color: #123456;
+  background-color: white;
+  border: 3px solid #555;
+  color: #222;
+  font-weight: bold;
+  position: relative;
+  .boulets{
+    position: absolute;
+    // bottom: 0;
+    top: 20%;
+    display: flex;
+  }
+  .boulet{
+    width: 30px;
+  }
+}
+
+#dbs{
+  position: absolute;
+  left: 20px;
+  .name{
+    font-weight: bold;
+  }
+}
+
+.boulet:before {
+  content: ' \25CF';
+  font-size: 1.5em;
+}
+
+.boulet-wikidata{
+  color: #990000;
+}
+
+.boulet-inventaire{
+  color: #319CC2;
+}
+
+.boulet-half{
+  width: 14px !important;
+  margin-right: 16px;
+  overflow: hidden;
+  opacity: 0.7;
+}
