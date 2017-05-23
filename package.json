@@ -7,6 +7,7 @@
     "start": "live-server . -w index.html main.*",
     "watch": "while true; do inotifywait -r ./src -e modify && ./scripts/build; done",
     "build": "./scripts/build",
+    "deploy": "./scripts/deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "maxlath",
