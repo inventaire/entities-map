@@ -67,10 +67,6 @@ a{
 .relation{
   position: absolute;
   opacity: 0.8;
-  // transition: opacity 0.5s;
-  // &:hover{
-    // opacity: 1;
-  // }
   border-radius: 1px;
   border-bottom: 3px solid #555;
   text-align: center;
@@ -137,6 +133,16 @@ main{
   }
   .boulet{
     width: 30px;
+  }
+  .example{
+    font-size: 0.7rem;
+    color: #888;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    &:hover{
+      color: #444;
+    }
   }
 }
 
