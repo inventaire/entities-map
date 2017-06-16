@@ -19,7 +19,7 @@
     <h1><a href="https://inventaire.io" tabindex="0">inventaire.io</a> entities map</h1>
     <div class="column">
       <div class="row">
-        <div class="authors box">
+        <div id="authors" class="box">
           <span class="label">authors</span>
           <a class="example" target="_blank" href="https://inventaire.io/entity/wd:Q237087">ex: wd:Q237087</a>
           <div class="boulets">
@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        <div class="series box">
+        <div id="series" class="box">
           <span class="label">series</span>
           <a class="example" target="_blank" href="https://inventaire.io/entity/wd:Q27536277">ex: wd:Q27536277</a>
           <div class="boulets">
@@ -36,7 +36,7 @@
             <div class="boulet boulet-inventaire"></div>
           </div>
         </div>
-        <div class="subjects box">
+        <div id="subjects" class="box">
           <span class="label">subjects</span>
           <a class="example" target="_blank" href="https://www.wikidata.org/wiki/Q484188">ex: wd:Q484188</a>
           <div class="boulets">
@@ -46,7 +46,7 @@
       </div>
 
       <div class="row">
-        <div class="works box">
+        <div id="works" class="box">
           <span class="label">works</span>
           <a class="example" target="_blank" href="https://inventaire.io/entity/wd:Q3203603">ex: wd:Q3203603</a>
           <div class="boulets">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="editions box">
+        <div id="editions" class="box">
           <span class="label">editions</span>
           <a class="example" target="_blank" href="https://inventaire.io/entity/isbn:9782290349229">ex: isbn:9782290349229</a>
           <div class="boulets">
@@ -66,7 +66,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="items box">
+        <div id="items" class="box">
           <span class="label">items</span>
           <a class="example" target="_blank" href="https://inventaire.io/items/278bbf4d704ee3c8d587fd73a885cca3">ex: item:278bbf4d704ee3c8d587fd73a885cca3</a>
           <div class="boulets">
@@ -76,10 +76,10 @@
       </div>
     </div>
 
-    <div id="works-authors" class="relation"><span class="property">P50</span></div>
-    <div id="works-series" class="relation"><span class="property">P179</span></div>
-    <div id="works-subject" class="relation"><span class="property">P921</span></div>
-    <div id="editions-works" class="relation"><span class="property">P629</span></div>
+    <div class="relation" data-subject="works" data-property="P50" data-object="authors"></div>
+    <div class="relation" data-subject="works" data-property="P179" data-object="series"></div>
+    <div class="relation" data-subject="works" data-property="P921" data-object="subjects"></div>
+    <div class="relation" data-subject="editions" data-property="P629" data-object="works"></div>
 
     <div id="dbs">
       <p id="wikidata" class="db">
@@ -92,4 +92,5 @@
       </p>
     </div>
   </main>
+  <script src="src/entities-map.js"></script>
 </body>
