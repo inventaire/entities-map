@@ -50,7 +50,7 @@ ul, ul li{
   }
 }
 
-.provenance, .properties{
+.provenance, .properties, .comments{
   border: 2px #eee solid;
   margin: 1em 0;
   padding: 1em;
@@ -123,6 +123,13 @@ footer{
   a{
     margin: 1em;
     display: inline-block;
+  }
+}
+
+/*Large screens*/
+@media screen and (min-width: 800px) {
+  .legend{
+    max-width: 20em;
   }
 }
 
