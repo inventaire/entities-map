@@ -1,3 +1,45 @@
-#!/usr/bin/env sh
-sed -e 's/href/target="_blank" rel="noopener" href/g' ./src/entities-map.html > index.html
-node-sass ./src/entities-map.scss > entities-map.css
+#!/usr/bin/env bash
+render_graph(){
+  name=$1
+  echo "rendering $name graph"
+  mmdc --input "src/${name}.mmd" \
+    --output "src/${name}.svg" \
+    --theme neutral \
+    --width 1200 \
+    --height 1200 \
+    --backgroundColor red
+}
+
+render_graph map
+render_graph example
+
+substitute_link(){
+  title=$1
+  uri=$2
+  section=${3:-entity}
+  text=${4:-$title}
+  url="https://inventaire.io/${section}/${uri}"
+  echo "s|${title}|<a href='${url}'>${title}</a>|"
+}
+
+cat src/example.svg \
+  | sed "$(substitute_link 'Fred Vargas' 'wd:Q237087')" \
+  | sed "$(substitute_link 'Commissioner Jean-Baptiste Adamsberg' 'wd:Q27536277')" \
+  | sed "$(substitute_link 'serial killer' 'wd:Q484188')" \
+  | sed "$(substitute_link 'LʼHomme aux cercles bleus' 'wd:Q3203603')" \
+  | sed "$(substitute_link 'The Chalk Circle Man' 'inv:183dd1c9a717fd999e50215d1d288ba7')" \
+  | sed "$(substitute_link 'Sian Reynolds' 'inv:6e59f968a1cd00dbedeb1964de9c5bf6')" \
+  | sed "$(substitute_link 'Penguin Books' 'wd:Q1336200')" \
+  | sed "$(substitute_link 'the physical object on my bookshelf' '6e59f968a1cd00dbedeb1964de9cad29' 'items')" \
+  > src/example.customize.svg
+
+cat src/template.html \
+  | sed '/<!-- MAP -->/ r src/map.svg' \
+  | sed '/<!-- EXAMPLE -->/ r src/example.customize.svg' \
+  | sed 's/href/target="_blank" rel="noopener" href/g' \
+  > index.html
+
+echo "compiling scss"
+node-sass ./src/style.scss > style.css
+
+echo "done"

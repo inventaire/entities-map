@@ -1,0 +1,26 @@
+graph BT
+
+  author["Fred Vargas"]
+  serie["Commissioner Jean-Baptiste Adamsberg"]
+  subject["serial killer"]
+  work["LʼHomme aux cercles bleus"]
+  edition["The Chalk Circle Man"]
+  translator["Sian Reynolds"]
+  publisher["Penguin Books"]
+  item["the physical object on my bookshelf"]
+
+  work -->|P50| author
+  work -->|P179| serie
+  work -->|P921| subject
+  edition -->|P655| translator
+  edition -->|P629| work
+  edition -->|P123| publisher
+  item -->|P1574| edition
+
+  classDef wikidata fill:#22ff2288,stroke-width:0;
+  classDef inventaire fill:#319cc288,stroke-width:0;
+  classDef notanentity fill:#eee,stroke-width:0;
+
+  class subject,work,serie,author,publisher wikidata;
+  class edition,translator inventaire;
+  class item notanentity;

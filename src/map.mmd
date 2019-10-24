@@ -1,0 +1,21 @@
+graph BT
+
+  work -->|P50| human
+  work -->|P179| serie
+  work -->|P921| subject
+  edition -->|P655| human
+  edition -->|P2679| human
+  edition -->|P2680| human
+  edition -->|P629| work
+  edition -->|P123| publisher
+  item -->|P1574| edition
+
+  classDef wikidata fill:#22ff2288,stroke-width:0;
+  classDef both fill:#31ffc2,stroke-width:0;
+  classDef inventaire fill:#319cc288,stroke-width:0;
+  classDef notanentity fill:#eee,stroke-width:0;
+
+  class subject wikidata;
+  class work,human,serie,publisher both;
+  class edition inventaire;
+  class item notanentity;

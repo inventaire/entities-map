@@ -1,3 +1,4 @@
 node_modules
-entities-map.css
+*.css
 index.html
+src/*svg
