@@ -127,14 +127,14 @@ footer{
 }
 
 /*Large screens*/
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
   .legend{
     max-width: 20em;
   }
 }
 
 /*Small screens*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .graphs{
     order: 1;
   }
