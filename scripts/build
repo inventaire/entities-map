@@ -40,6 +40,6 @@ cat src/template.html \
   > index.html
 
 echo "compiling scss"
-node-sass ./src/style.scss > style.css
+sass ./src/style.scss > style.css
 
 echo "done"
