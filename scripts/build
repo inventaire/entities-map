@@ -26,9 +26,10 @@ substitute_inv_link(){
 }
 
 substitute_wiki_link(){
-  title=$1
+  target=$1
+  title=${2:-$1}
   url="https://wiki.inventaire.io/wiki/Glossary#${title}"
-  echo "s|${title}|<a href='${url}'>${title}</a>|"
+  echo "s|${target}|<a href='${url}'>${target}</a>|"
 }
 
 cat src/map.svg \
@@ -40,7 +41,7 @@ cat src/map.svg \
   | sed "$(substitute_wiki_link Publisher)" \
   | sed "$(substitute_wiki_link Collection)" \
   | sed "$(substitute_wiki_link Edition)" \
-  | sed "$(substitute_wiki_link Item)" \
+  | sed "$(substitute_wiki_link "Inventory item" Item)" \
   | sed "$(substitute_wiki_link List)" \
   | sed "$(substitute_wiki_link Shelf)" \
   | sed "$(substitute_wiki_link User)" \
