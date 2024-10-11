@@ -1,26 +1,53 @@
-graph BT
+graph TB
 
-  work -->|author| human
-  work -->|serie| serie
-  work -->|subject| subject
-  work -->|genre| genre
-  serie -->|author| human
-  serie -->|subject| subject
-  serie -->|genre| genre
-  edition -->|translator| human
-  edition -->|author of foreword/afterword| human
-  edition -->|edition of| work
-  edition -->|publisher| publisher
-  edition -->|collection| collection
-  collection -->|publisher| publisher
-  item --> edition
+  subject[Subject]:::wikidata
+  genre[Genre]:::wikidata
+  work[Work]:::both
+  human[Human]:::both
+  serie[Serie]:::both
+  publisher[Publisher]:::both
+  collection[Collection]:::both
+  edition[Edition]:::both
+  item[Inventory item]:::notanentity
+  list[List]:::notanentity
+  shelf[Shelf]:::notanentity
+  user[User]:::notanentity
+
+  %% Doesn't produce the links as the docs says
+  %% click subject https://wiki.inventaire.io/wiki/Glossary#Subject
+  %% click genre https://wiki.inventaire.io/wiki/Glossary#Genre
+  %% click work https://wiki.inventaire.io/wiki/Glossary#Work
+  %% click human https://wiki.inventaire.io/wiki/Glossary#Human
+  %% click serie https://wiki.inventaire.io/wiki/Glossary#Serie
+  %% click publisher https://wiki.inventaire.io/wiki/Glossary#Publisher
+  %% click collection https://wiki.inventaire.io/wiki/Glossary#Collection
+  %% click edition https://wiki.inventaire.io/wiki/Glossary#Edition
+  %% click item https://wiki.inventaire.io/wiki/Glossary#Item
+  %% click shelf https://wiki.inventaire.io/wiki/Glossary#Shelf
+  %% click list https://wiki.inventaire.io/wiki/Glossary#List
+  %% click user https://wiki.inventaire.io/wiki/Glossary#User
+
+  work -->|has author| human
+  work -->|is part of| serie
+  work -->|has subject| subject
+  work -->|has genre| genre
+  serie -->|has author| human
+  serie -->|has subject| subject
+  serie -->|has genre| genre
+  edition -->|has translator| human
+  edition -->|has author of foreword/afterword| human
+  edition -->|is an edition of| work
+  edition -->|has publisher| publisher
+  edition -->|published in| collection
+  collection -->|published by| publisher
+  item -->|is an examplar of| edition
+  item -->|is in| shelf
+  list -->|has element| work
+  user -->|has| item
+  user -->|has| shelf
+  user -->|has| list
 
   classDef wikidata fill:#22ff2288,stroke-width:0;
   classDef both fill:#31ffc2,stroke-width:0;
-  classDef inventaire fill:#319cc288,stroke-width:0;
+  %% classDef inventaire fill:#319cc288,stroke-width:0;
   classDef notanentity fill:#eee,stroke-width:0;
-
-  class subject,genre wikidata;
-  class work,human,serie,publisher,collection both;
-  class edition inventaire;
-  class item notanentity;

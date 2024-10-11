@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 render_graph(){
   name=$1
-  size=$2
+  width=$2
+  height=${3:-$width}
   echo "rendering $name graph"
   mmdc --input "src/${name}.mmd" \
     --output "src/${name}.svg" \
     --theme neutral \
-    --width 1200 \
-    --height 1200
+    --width $width \
+    --height $height
 }
 
-render_graph map 1600
+render_graph map 1200
 render_graph example 1200
 
-substitute_link(){
+substitute_inv_link(){
   title=$1
   uri=$2
   section=${3:-entity}
@@ -22,20 +25,47 @@ substitute_link(){
   echo "s|${title}|<a href='${url}'>${title}</a>|"
 }
 
+substitute_wiki_link(){
+  title=$1
+  url="https://wiki.inventaire.io/wiki/Glossary#${title}"
+  echo "s|${title}|<a href='${url}'>${title}</a>|"
+}
+
+cat src/map.svg \
+  | sed "$(substitute_wiki_link Subject)" \
+  | sed "$(substitute_wiki_link Genre)" \
+  | sed "$(substitute_wiki_link Work)" \
+  | sed "$(substitute_wiki_link Human)" \
+  | sed "$(substitute_wiki_link Serie)" \
+  | sed "$(substitute_wiki_link Publisher)" \
+  | sed "$(substitute_wiki_link Collection)" \
+  | sed "$(substitute_wiki_link Edition)" \
+  | sed "$(substitute_wiki_link Item)" \
+  | sed "$(substitute_wiki_link List)" \
+  | sed "$(substitute_wiki_link Shelf)" \
+  | sed "$(substitute_wiki_link User)" \
+  > src/map.customize.svg
+
 cat src/example.svg \
-  | sed "$(substitute_link 'Fred Vargas' 'wd:Q237087')" \
-  | sed "$(substitute_link 'Commissioner Jean-Baptiste Adamsberg' 'wd:Q27536277')" \
-  | sed "$(substitute_link 'serial killer' 'wd:Q484188')" \
-  | sed "$(substitute_link 'LʼHomme aux cercles bleus' 'wd:Q3203603')" \
-  | sed "$(substitute_link 'The Chalk Circle Man' 'inv:183dd1c9a717fd999e50215d1d288ba7')" \
-  | sed "$(substitute_link 'Sian Reynolds' 'inv:6e59f968a1cd00dbedeb1964de9c5bf6')" \
-  | sed "$(substitute_link 'Penguin Books' 'wd:Q1336200')" \
-  | sed "$(substitute_link 'the physical object on my bookshelf' '6e59f968a1cd00dbedeb1964de9cad29' 'items')" \
+  | sed "$(substitute_inv_link 'Fred Vargas' 'wd:Q237087')" \
+  | sed "$(substitute_inv_link 'The Adamsberg series' 'wd:Q27536277')" \
+  | sed "$(substitute_inv_link 'serial killer' 'wd:Q484188')" \
+  | sed "$(substitute_inv_link 'LʼHomme aux cercles bleus' 'wd:Q3203603')" \
+  | sed "$(substitute_inv_link 'The Chalk Circle Man' 'inv:183dd1c9a717fd999e50215d1d288ba7')" \
+  | sed "$(substitute_inv_link 'Sian Reynolds' 'inv:6e59f968a1cd00dbedeb1964de9c5bf6')" \
+  | sed "$(substitute_inv_link 'Penguin Books' 'wd:Q1336200')" \
+  | sed "$(substitute_inv_link 'My book' 6e59f968a1cd00dbedeb1964de9cad29 items)" \
+  | sed "$(substitute_inv_link 'My shelf' 29e46df3251fef28a4cd49e1cad84140 shelves)" \
+  | sed "$(substitute_inv_link 'To read' 29e46df3251fef28a4cd49e1cad82b02 lists)" \
+  | sed "$(substitute_inv_link 'Me' demo_user users)" \
   > src/example.customize.svg
+
+mv src/map.customize.svg src/map.svg
+mv src/example.customize.svg src/example.svg
 
 cat src/template.html \
   | sed '/<!-- MAP -->/ r src/map.svg' \
-  | sed '/<!-- EXAMPLE -->/ r src/example.customize.svg' \
+  | sed '/<!-- EXAMPLE -->/ r src/example.svg' \
   | sed 's/href/target="_blank" rel="noopener" href/g' \
   > index.html
 

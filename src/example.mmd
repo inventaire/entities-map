@@ -1,26 +1,36 @@
-graph BT
+graph TB
 
-  author["Fred Vargas"]
-  serie["Commissioner Jean-Baptiste Adamsberg"]
-  subject["serial killer"]
-  work["LʼHomme aux cercles bleus"]
-  edition["The Chalk Circle Man"]
-  translator["Sian Reynolds"]
-  publisher["Penguin Books"]
-  item["the physical object on my bookshelf"]
+  author["Fred Vargas"]:::wikidata
+  serie["The Adamsberg series"]:::wikidata
+  subject["serial killer"]:::wikidata
+  work["LʼHomme aux cercles bleus"]:::wikidata
+  edition["The Chalk Circle Man"]:::wikidata
+  translator["Sian Reynolds"]:::wikidata
+  publisher["Penguin Books"]:::wikidata
+  item["My book (the physical object on my bookshelf)"]:::notanentity
+  shelf["My shelf"]:::notanentity
+  list["To read list"]:::notanentity
+  user["Me (the user)"]:::notanentity
 
-  work -->|author| author
-  work -->|serie| serie
-  work -->|subject| subject
-  edition -->|translator| translator
-  edition -->|edition of| work
-  edition -->|publisher| publisher
-  item -->|examplar of| edition
+  work -->|has author| author
+  work -->|is part of| serie
+  work -->|has subject| subject
+  %% work -->|has genre| genre
+  serie -->|has author| author
+  %% serie -->|has genre| genre
+  edition -->|has translator| translator
+  %% edition -->|has author of foreword/afterword| human
+  edition -->|is an edition of| work
+  edition -->|has publisher| publisher
+  %% edition -->|published in| collection
+  %% collection -->|published by| publisher
+  item -->|is an examplar of| edition
+  item -->|is in| shelf
+  list -->|has element| work
+  user -->|has| item
+  user -->|has| shelf
+  user -->|has| list
 
   classDef wikidata fill:#22ff2288,stroke-width:0;
-  classDef inventaire fill:#319cc288,stroke-width:0;
+  %% classDef inventaire fill:#319cc288,stroke-width:0;
   classDef notanentity fill:#eee,stroke-width:0;
-
-  class subject,work,serie,author,publisher wikidata;
-  class edition,translator inventaire;
-  class item notanentity;
