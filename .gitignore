@@ -2,3 +2,4 @@ node_modules
 *.css
 index.html
 src/*svg
+pnpm-lock.yaml

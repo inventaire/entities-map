@@ -9,13 +9,13 @@ graph BT
   publisher["Penguin Books"]
   item["the physical object on my bookshelf"]
 
-  work -->|P50| author
-  work -->|P179| serie
-  work -->|P921| subject
-  edition -->|P655| translator
-  edition -->|P629| work
-  edition -->|P123| publisher
-  item -->|P1574| edition
+  work -->|author| author
+  work -->|serie| serie
+  work -->|subject| subject
+  edition -->|translator| translator
+  edition -->|edition of| work
+  edition -->|publisher| publisher
+  item -->|examplar of| edition
 
   classDef wikidata fill:#22ff2288,stroke-width:0;
   classDef inventaire fill:#319cc288,stroke-width:0;

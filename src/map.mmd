@@ -1,19 +1,18 @@
 graph BT
 
-  work -->|P50| human
-  work -->|P179| serie
-  work -->|P921| subject
-  work -->|P136| genre
-  serie -->|P50| human
-  serie -->|P921| subject
-  serie -->|P136| genre
-  edition -->|P655| human
-  edition -->|P2679| human
-  edition -->|P2680| human
-  edition -->|P629| work
-  edition -->|P123| publisher
-  edition -->|P195| collection
-  collection -->|P123| publisher
+  work -->|author| human
+  work -->|serie| serie
+  work -->|subject| subject
+  work -->|genre| genre
+  serie -->|author| human
+  serie -->|subject| subject
+  serie -->|genre| genre
+  edition -->|translator| human
+  edition -->|author of foreword/afterword| human
+  edition -->|edition of| work
+  edition -->|publisher| publisher
+  edition -->|collection| collection
+  collection -->|publisher| publisher
   item --> edition
 
   classDef wikidata fill:#22ff2288,stroke-width:0;

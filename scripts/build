@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 render_graph(){
   name=$1
+  size=$2
   echo "rendering $name graph"
   mmdc --input "src/${name}.mmd" \
     --output "src/${name}.svg" \
     --theme neutral \
     --width 1200 \
-    --height 1200 \
-    --backgroundColor red
+    --height 1200
 }
 
-render_graph map
-render_graph example
+render_graph map 1600
+render_graph example 1200
 
 substitute_link(){
   title=$1

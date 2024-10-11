@@ -13,13 +13,12 @@
   "author": "maxlath",
   "license": "MIT",
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.2.1",
     "live-server": "~1.1.0",
-    "mermaid.cli": "^0.5.1",
     "sass": "^1.30.0"
   },
   "engines": {
-    "node": "^6.9.1",
-    "npm": "^3.10.8"
-  },
-  "dependencies": {}
+    "node": "> 6",
+    "npm": "> 3"
+  }
 }

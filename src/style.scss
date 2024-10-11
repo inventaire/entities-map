@@ -86,15 +86,15 @@ ul, ul li{
   flex: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
 .map, .example{
-  margin: 1em;
+  margin: 1em auto;
   flex: 1;
   svg{
-    min-width: 800px;
+    min-width: min(80vw, 1200px);
   }
 }
 
