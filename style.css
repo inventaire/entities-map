@@ -1,0 +1,149 @@
+body {
+  color: #222;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 1em 0;
+}
+
+h2 {
+  font-size: 1.6em;
+  margin: 1.5em 0 0.2em 0;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ul li {
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0;
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.legend h3 {
+  font-size: 1.1rem;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.provenance, .properties, .comments {
+  border: 2px #eee solid;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.provenance ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.provenance ul li {
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.properties a {
+  color: #444;
+}
+.properties a:hover {
+  color: black;
+}
+.properties .pid {
+  display: inline-block;
+  width: 4em;
+}
+
+.graphs {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.map, .example {
+  margin: 1em auto;
+  flex: 1;
+}
+.map svg, .example svg {
+  min-width: min(80vw, 1200px);
+}
+
+hr {
+  margin: 1em 0;
+}
+
+.wikidata {
+  background-color: rgba(34, 255, 34, 0.5);
+}
+
+.both {
+  background-color: #31ffc2;
+}
+
+.inventaire {
+  background-color: rgba(49, 156, 194, 0.5);
+}
+
+.non-entity {
+  background-color: #eee;
+}
+
+footer {
+  margin: 2em 0 0 0;
+  background-color: #eee;
+  text-align: center;
+  align-self: stretch;
+}
+footer a {
+  margin: 1em;
+  display: inline-block;
+}
+
+/*Large screens*/
+@media screen and (min-width: 1200px) {
+  .legend {
+    max-width: 20em;
+  }
+}
+/*Small screens*/
+@media screen and (max-width: 1200px) {
+  .graphs {
+    order: 1;
+  }
+  .legend {
+    flex: 1;
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .legend .provenance, .legend .properties {
+    margin: 1em;
+  }
+}
