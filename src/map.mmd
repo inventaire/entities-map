@@ -29,15 +29,15 @@ graph TB
 
   work -->|has author| human
   work -->|is part of| serie
-  work -->|has subject| subject
+  work -->|is about| subject
   work -->|has genre| genre
   serie -->|has author| human
-  serie -->|has subject| subject
+  serie -->|is about| subject
   serie -->|has genre| genre
-  edition -->|has translator| human
+  edition -->|translated by| human
   edition -->|has author of foreword/afterword| human
   edition -->|is an edition of| work
-  edition -->|has publisher| publisher
+  edition -->|published by| publisher
   edition -->|published in| collection
   collection -->|published by| publisher
   item -->|is an examplar of| edition
