@@ -12,8 +12,10 @@
   },
   "author": "maxlath",
   "license": "MIT",
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.2.1"
+  },
   "devDependencies": {
-    "@mermaid-js/mermaid-cli": "^11.2.1",
     "live-server": "~1.1.0",
     "sass": "^1.30.0"
   },
